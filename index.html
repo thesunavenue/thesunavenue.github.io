@@ -2,13 +2,205 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Card | City list</title>
+
+    <!-- <link href="./css/style.css" rel="stylesheet"> -->
+    <link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f7fa;
+}
+
+#offices {
+    padding-bottom: 34px;
+    margin: 0px -10px;
+}
+
+#offices div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#offices .office {
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    #offices .office {
+        background-size: 228px 127px;
+    }
+}
+
+a {
+    /* color: #27ae60; */
+    text-decoration: none;
+    background-color: #fff
+}
+
+a.office {
+    background-size: 65%;
+    background-position-x: center;
+    background-position-y: 25%;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    ms-filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    box-shadow: 0 0 2px 0 rgba(137, 146, 177, 0.15), 0px 3px 10px 0 rgba(137, 146, 177, 0.1);
+    display: block;
+    text-align: center;
+    height: 227px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: box-shadow 0.2s;
+}
+
+a.office:after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: transparent;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+a.office:hover, a.office.selected {
+    filter: none;
+    text-decoration: none;
+    box-shadow: 0px 1px 15px 0 rgba(137, 146, 177, 0.15), 0px 10px 20px 0 rgba(137, 146, 177, 0.15);
+}
+
+body .office:hover:after, 
+body .office.selected:after {
+    background-color: #6aac0e;
+}
+
+#svgroot {
+    display: none;
+    position: absolute;
+    right: 0px;
+    background: #fff;
+}
+
+#offices .office_title {
+    text-transform: uppercase;
+}
+.office_title {
+    color: #777;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    position: relative;
+    top: 72%;
+}
+.office_title:last-child {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+</style>
 </head>
 
 <body>
     <h2 style="text-align: center;">Our offices</h2>
-   
+    <div class="container">
+        <div id="offices" class="row">
+            <div class="col-md-6 col-sm-6">
+                <a data-src="./assets/svg/office-tlv.svg" class="office lazy" data-office="tlv office" 
+                style="background-image: url(&quot;./assets/svg/office-tlv.svg&quot;);">
+                    <div class="office_title">Israel Office</div>
+                    <div class="office_title">Israel</div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a data-src="./assets/svg/office-cyprus.svg" class="office lazy" data-office="Cyprus Office" 
+                style="background-image: url(&quot;./assets/svg/office-cyprus.svg&quot;);">
+                    <div class="office_title">Cyprus Office</div>
+                    <div class="office_title">Cyprus</div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a data-src="./assets/svg/office-uk.svg" class="office lazy" data-office="UK Office" 
+                style="background-image: url(&quot;./assets/svg/office-uk.svg&quot;);">
+                    <div class="office_title">UK Office</div>
+                    <div class="office_title">United Kingdom</div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a data-src="./assets/svg/office-usa.svg" class="office lazy" data-office="USA Office" 
+                style="background-image: url(&quot;./assets/svg/office-usa.svg&quot;);">
+                    <div class="office_title">USA Office</div>
+                    <div class="office_title">NJ</div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a data-src="./assets/svg/office-hongkong.svg" class="office lazy" data-office="Hong Kong Office" 
+                style="background-image: url(&quot;./assets/svg/office-hongkong.svg&quot;);">
+                    <div class="office_title">Hong Kong Office</div>
+                    <div class="office_title"></div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a data-src="./assets/svg/office-australia.svg" class="office lazy" data-office="Australia office" 
+                style="background-image: url(&quot;./assets/svg/office-australia.svg&quot;);">
+                    <div class="office_title">Australia Office</div>
+                    <div class="office_title">NSW</div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a data-src="./assets/svg/office-china.svg" class="office lazy" data-office="China Office" 
+                style="background-image: url(&quot;./assets/svg/office-china.svg&quot;);">
+                    <div class="office_title">China Office</div>
+                    <div class="office_title">China</div>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a data-src="./assets/svg/office-gibraltar.svg" class="office lazy" data-office="none" 
+                style="background-image: url(&quot;./assets/svg/office-gibraltar.svg&quot;);">
+                    <div class="office_title">Gibraltar Office</div>
+                    <div class="office_title"></div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a data-src="./assets/svg/office-copenhagen.svg" class="office lazy" data-office="Copenhagen Office" 
+                style="background-image: url(&quot;./assets/svg/office-copenhagen.svg&quot;);">
+                    <div class="office_title">Copenhagen Office</div>
+                    <div class="office_title"></div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a data-src="./assets/svg/office-kiev.svg" class="office lazy" data-office="Kiev Office" 
+                style="background-image: url(&quot;./assets/svg/office-kiev.svg&quot;);">
+                    <div class="office_title">Kiev Office</div>
+                    <div class="office_title"></div>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
     
- 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+        });
+
+
+    </script>
 </body>
 </html>
